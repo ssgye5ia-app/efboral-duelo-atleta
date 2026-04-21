@@ -868,3 +868,74 @@ textarea {
     border-radius: 20px;
   }
 }
+/* =========================================
+   🚀 EFBORAL PRO+ · FULLSCREEN MOBILE APP
+   ========================================= */
+
+/* 📱 Altura real en móviles (soluciona barra navegador) */
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+
+/* 🧩 App ocupa toda la pantalla */
+.app {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 📦 Contenedor principal flexible */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🎮 Cada pantalla ocupa todo */
+.step-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🧠 Panel interno se estira */
+.panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* 🎯 INTRO tipo APP (pantalla inicial) */
+#stepIntro {
+  display: flex;
+}
+
+#stepIntro .panel {
+  justify-content: flex-start;
+  min-height: 100%;
+}
+
+/* 📲 Ajuste fino móvil */
+@media (max-width: 768px) {
+  .main {
+    padding: 12px 10px 20px;
+  }
+
+  #stepIntro .panel {
+    padding-top: 12px;
+  }
+}
+
+/* 🧪 EXTRA PRO: evitar zoom raro en inputs */
+input, select, button {
+  font-size: 16px;
+}
