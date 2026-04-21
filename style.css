@@ -1015,3 +1015,70 @@ body {
 input, select, button {
   font-size: 16px;
 }
+/* =====================================================
+   FIX FINAL INTRO VERCEL = MISMO ASPECTO QUE CODEPEN
+   ===================================================== */
+
+/* La portada NO debe comportarse como pantalla a altura completa */
+#stepIntro,
+#stepIntro.active {
+  display: block !important;
+  flex: none !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+
+/* El panel de portada debe quedar compacto */
+#stepIntro .panel,
+#stepIntro.active .panel,
+#stepIntro .panel.panel--intro,
+#stepIntro.active .panel.panel--intro {
+  display: block !important;
+  flex: none !important;
+  min-height: auto !important;
+  height: auto !important;
+  justify-content: flex-start !important;
+}
+
+/* El contenido interior no debe estirarse */
+#stepIntro .panel-content,
+#stepIntro.active .panel-content {
+  flex: none !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+
+/* El bloque de acciones queda pegado al contenido */
+#stepIntro .panel-actions,
+#stepIntro.active .panel-actions {
+  margin-top: 18px !important;
+}
+
+/* Mantener la lógica de pasos para el resto */
+.step-panel {
+  display: none !important;
+}
+
+.step-panel.active {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* EXCEPCIÓN: la intro se ve como bloque normal, no como flex estirado */
+#stepIntro.active {
+  display: block !important;
+}
+
+/* Ajuste visual móvil */
+@media (max-width: 768px) {
+  #stepIntro .panel,
+  #stepIntro.active .panel {
+    margin-top: 0 !important;
+    padding: 16px !important;
+  }
+
+  #stepIntro .panel-actions,
+  #stepIntro.active .panel-actions {
+    margin-top: 16px !important;
+  }
+}
