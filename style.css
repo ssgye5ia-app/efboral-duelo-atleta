@@ -945,3 +945,73 @@ button,
 textarea {
   font-size: 16px;
 }
+/* =====================================================
+   💥 FIX EFBORAL PRO · VERCEL = CODEPEN PERFECTO
+   ===================================================== */
+
+/* 1. Viewport móvil real */
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+.app {
+  min-height: 100dvh;
+}
+
+/* 2. MODO APP REAL (solo una pantalla visible) */
+.step-panel {
+  display: none;
+}
+
+.step-panel.active {
+  display: flex;
+}
+
+/* 3. INTRO tipo CodePen (sin hueco negro) */
+#stepIntro,
+#stepIntro.active {
+  display: flex;
+}
+
+/* 🔥 CLAVE: quitar distribución vertical */
+#stepIntro .panel {
+  justify-content: flex-start !important;
+  gap: 16px;
+}
+
+/* 🔥 CLAVE: eliminar espacio fantasma */
+#stepIntro .panel-content {
+  flex: unset !important;
+}
+
+/* 🔥 CLAVE: botón cerca del contenido */
+#stepIntro .panel-actions {
+  margin-top: 16px !important;
+}
+
+/* 🔥 MUY IMPORTANTE: evitar alturas forzadas SOLO en intro */
+#stepIntro .panel,
+#stepIntro .panel-content {
+  min-height: auto !important;
+  height: auto !important;
+}
+
+/* 4. Ajuste fino móvil */
+@media (max-width: 768px) {
+  .main {
+    padding: 16px 12px 24px;
+  }
+
+  #stepIntro .panel {
+    margin-top: 0;
+  }
+}
+
+/* 5. UX móvil */
+input, select, button {
+  font-size: 16px;
+}
