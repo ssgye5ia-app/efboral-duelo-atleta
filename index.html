@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>EFBoral · v19.1</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <div class="app" id="appRoot">
+  <main class="main step-container">
+    <div class="fullscreen-wrapper">
+      <button id="fullscreenBtn" class="btn btn--secondary">Pantalla completa</button>
+    </div>
+
+    <!-- PASO 0 -->
+    <div id="stepIntro" class="step-panel active">
+      <section class="panel panel--intro">
+        <div class="panel-content">
+          <div class="info-box info-box--story intro-main-box">
+            <strong>EFBoral · v19.1 · Modo Premium</strong><br>
+            🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral<br>
+            Duelo con cromo compartido, rondas, dados, ejecución, desempate, ranking, historial y álbum.<br>
+            ¡Gana duelos y completa los 36 cromos!
+          </div>
+
+          <details class="how-panel">
+            <summary>🕹️ ¿Cómo se juega?</summary>
+            <div class="how-panel__content">
+              Primero se escribe el nombre de quien reta 🗡️ y de quien acepta el duelo 🛡️.<br><br>
+
+              De forma opcional, se pueden usar los filtros por familia y nivel para personalizar el reto, o jugar directamente al azar 🎲.<br><br>
+
+              Después se roba un cromo compartido 🃏.<br>
+              Ese será el ejercicio que ambos deberán realizar.<br><br>
+
+              A continuación, se tiran los dados 🎲 para establecer la carga del ejercicio:<br>
+              repeticiones, tiempo o ciclos.<br><br>
+
+              Desde ese momento comienza la acción:<br>
+              - Una persona ejecuta el ejercicio intentando cumplir:<br>
+              &nbsp;&nbsp;- el indicador de logro del cromo 💪<br>
+              &nbsp;&nbsp;- y la carga marcada por los dados 🎲<br>
+              - La otra persona observa y ayuda señalando posibles errores de ejecución 👀🔍<br><br>
+
+              Después se cambian los roles 🔁.<br><br>
+
+              ⚔️ ¿Cómo termina el duelo?<br>
+              El resultado depende de:<br>
+              - la carga marcada por los dados<br>
+              - el indicador de logro del cromo<br><br>
+
+              ❌ Nadie cumple<br>
+              → nuevo cromo o finalizar partida<br><br>
+
+              🗡️ Gana Retador<br>
+              → añade el cromo a su álbum<br><br>
+
+              🛡️ Gana Retado<br>
+              → añade el cromo a su álbum<br><br>
+
+              🤝 Empate<br>
+              → se activa el desempate<br><br>
+
+              ⚡ Desempate pedagógico<br>
+              En caso de empate, se activa una muerte súbita pedagógica sin azar con preguntas paralelas para ambos jugadores.<br><br>
+
+              🏆 Misión final<br>
+              Completar los 36 cromos del Álbum Atleta EFBoral 💪🧠
+            </div>
+          </details>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar">
+            <button id="startIntroBtn" class="btn btn--primary">EMPEZAR DUELO</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PASO 1 -->
+    <div id="stepConfig" class="step-panel">
+      <section class="panel">
+        <div class="panel-content">
+          <div class="identity-strip">🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral</div>
+
+          <div class="panel__header">
+            <h2>⚙️ Configuración del duelo</h2>
+            <span class="chip">Paso 1</span>
+          </div>
+
+          <div class="setup-grid">
+            <div class="field">
+              <label for="playerA">⚔️ Retador</label>
+              <input id="playerA" type="text" placeholder="Nombre del retador">
+            </div>
+            <div class="field">
+              <label for="playerB">🛡️ Retado</label>
+              <input id="playerB" type="text" placeholder="Nombre del retado">
+            </div>
+          </div>
+
+          <div class="info-box info-box--mini config-rounds-info">
+            El duelo puede jugarse a <strong>3 rondas</strong>, <strong>5 rondas</strong>, <strong>7 rondas</strong> o en <strong>modo libre</strong>.
+          </div>
+
+          <div class="setup-grid" style="margin-top:16px;">
+            <div class="field">
+              <label for="roundsSelect">🔁 Nº de rondas</label>
+              <select id="roundsSelect">
+                <option value="0">Libre</option>
+                <option value="3">3 rondas</option>
+                <option value="5">5 rondas</option>
+                <option value="7">7 rondas</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar">
+            <button id="startBtn" class="btn btn--primary">Iniciar duelo ➡</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PASO 2 -->
+    <div id="stepControl" class="step-panel">
+      <section class="panel control-panel">
+        <div class="panel-content">
+          <div class="identity-strip">🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral</div>
+
+          <div class="panel__header">
+            <h2>🎛️ Control del duelo</h2>
+            <span class="chip">Paso 2</span>
+          </div>
+
+          <div class="control-grid">
+            <div class="field">
+              <label for="familyFilter">Familia de ejercicios</label>
+              <select id="familyFilter">
+                <option value="all">Todas</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="levelFilter">Nivel del cromo</label>
+              <select id="levelFilter">
+                <option value="all">Todos</option>
+                <option value="Despertar">Despertar</option>
+                <option value="Pro">Pro</option>
+                <option value="Leyenda">Leyenda</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field field-inline">
+            <label class="checkbox-wrap">
+              <input id="avoidOwnedToggle" type="checkbox" checked>
+              <span>🔒 Evitar repetidos del álbum del retador</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar">
+            <button id="nextToCardBtn" class="btn btn--primary">Siguiente ➡</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PASO 3 -->
+    <div id="stepCard" class="step-panel">
+      <section class="panel">
+        <div class="panel-content">
+          <div class="identity-strip">🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral</div>
+
+          <div class="panel__header">
+            <h2>🎴 Cromo del duelo</h2>
+            <span class="chip">Paso 3</span>
+          </div>
+
+          <div class="info-box info-box--mini">
+            🚀 Todo empieza aquí… Pulsa 🎴 Robar cromo y analiza su información 👀… será clave para ejecutar ⚡ y decidir el desempate 🎯.
+          </div>
+
+          <div class="toolbar toolbar-center">
+            <button id="drawCardBtn" class="btn btn--primary">🎴 Robar cromo</button>
+          </div>
+
+          <div id="cardDisplay" class="card-display card-display--empty">Aún no hay cromo activo.</div>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar">
+            <button id="nextToDiceBtn" class="btn btn--primary">Siguiente ➡</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PASO 4 -->
+    <div id="stepDice" class="step-panel">
+      <section class="panel">
+        <div class="panel-content">
+          <div class="identity-strip">🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral</div>
+
+          <div class="panel__header">
+            <h2>🎲 Dados del reto</h2>
+            <span class="chip">Paso 4</span>
+          </div>
+
+          <div class="info-box info-box--mini">
+            La carga se calcula con el resultado de los dados según el tipo de cromo activo. Los dados marcan cuántas repeticiones, cuánto tiempo o cuántos ciclos deben completarse en el duelo.
+          </div>
+
+          <div class="toolbar toolbar-center">
+            <button id="rollDiceBtn" class="btn btn--primary">🎲 Tirar dados</button>
+          </div>
+
+          <div class="dice-visual-wrap">
+            <div id="diceCube" class="dice-cube">🎲</div>
+          </div>
+
+          <div class="dice-single">
+            <div class="dice-card">
+              <div class="dice-card__label">Carga generada</div>
+              <div class="dice-card__value" id="diceValue">—</div>
+            </div>
+          </div>
+
+          <div id="diceSummary" class="info-box">Pulsa “Tirar dados” para generar la carga del reto.</div>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar">
+            <button id="nextToExecutionBtn" class="btn btn--primary" disabled>SIGUIENTE ➡</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PASO 5 -->
+    <div id="stepExecution" class="step-panel">
+      <section class="panel">
+        <div class="panel-content">
+          <div class="identity-strip">🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral</div>
+
+          <div class="panel__header">
+            <h2>💪 Ejecución del ejercicio</h2>
+            <span class="chip">Paso 5</span>
+          </div>
+
+          <div class="execution-info">
+            <button id="btnVerCromo" class="btn-cromo-toggle hidden" type="button">
+              Ver cromo actual
+            </button>
+
+            <div class="execution-guide">
+              <div class="execution-guide__title">🎯 Indicador de logro</div>
+              <div id="executionGuideText" class="execution-guide__text"></div>
+            </div>
+
+            <div class="mini-feedback-box">
+              <div class="mini-feedback-box__title">⚡ MINI FEEDBACK EJECUCIÓN</div>
+
+              <div class="mini-feedback-grid">
+                <div class="player-feedback">
+                  <div class="player-feedback__name" id="feedbackNameA">Retador</div>
+
+                  <div class="feedback-group">
+                    <div class="feedback-group__title">Técnica</div>
+                    <label class="choice-chip">
+                      <input type="radio" name="aTechnique" value="1">
+                      <span>✔ Técnica correcta</span>
+                    </label>
+                    <label class="choice-chip choice-chip--bad">
+                      <input type="radio" name="aTechnique" value="0">
+                      <span>❌ Error clave detectado</span>
+                    </label>
+                  </div>
+
+                  <div class="feedback-group">
+                    <div class="feedback-group__title">Indicador</div>
+                    <label class="choice-chip">
+                      <input type="radio" name="aIndicator" value="1">
+                      <span>🎯 Cumple indicador de logro</span>
+                    </label>
+                    <label class="choice-chip choice-chip--bad">
+                      <input type="radio" name="aIndicator" value="0">
+                      <span>⛔ No cumple indicador de logro</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="player-feedback">
+                  <div class="player-feedback__name" id="feedbackNameB">Retado</div>
+
+                  <div class="feedback-group">
+                    <div class="feedback-group__title">Técnica</div>
+                    <label class="choice-chip">
+                      <input type="radio" name="bTechnique" value="1">
+                      <span>✔ Técnica correcta</span>
+                    </label>
+                    <label class="choice-chip choice-chip--bad">
+                      <input type="radio" name="bTechnique" value="0">
+                      <span>❌ Error clave detectado</span>
+                    </label>
+                  </div>
+
+                  <div class="feedback-group">
+                    <div class="feedback-group__title">Indicador</div>
+                    <label class="choice-chip">
+                      <input type="radio" name="bIndicator" value="1">
+                      <span>🎯 Cumple indicador de logro</span>
+                    </label>
+                    <label class="choice-chip choice-chip--bad">
+                      <input type="radio" name="bIndicator" value="0">
+                      <span>⛔ No cumple indicador de logro</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="executionChecklist" class="info-box info-box--mini hidden"></div>
+          </div>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar">
+            <button id="resolveDuelBtn" class="btn btn--primary">Resolver duelo</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PASO 6 -->
+    <div id="stepSudden" class="step-panel">
+      <section class="panel">
+        <div class="panel-content">
+          <div class="identity-strip">🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral</div>
+
+          <div class="panel__header">
+            <h2>⚡ Desempate pedagógico</h2>
+            <span class="chip">Paso 6</span>
+          </div>
+
+          <div id="suddenDeathIntro" class="info-box">
+            Ambos jugadores reciben una pregunta paralela y pedagógica basada en información real del cromo. Si uno acierta y el otro falla, se rompe el empate. Si ambos aciertan o ambos fallan, se genera otra tanda sin repetir preguntas del mismo duelo.
+          </div>
+
+          <div id="suddenDeathRoundInfo" class="info-box info-box--mini hidden"></div>
+
+          <div class="sudden-grid">
+            <div class="sudden-card">
+              <div class="sudden-card__name" id="suddenNameA">Retador</div>
+              <div class="sudden-card__question" id="suddenQuestionA">—</div>
+              <div class="sudden-card__options" id="suddenOptionsA"></div>
+            </div>
+
+            <div class="sudden-card">
+              <div class="sudden-card__name" id="suddenNameB">Retado</div>
+              <div class="sudden-card__question" id="suddenQuestionB">—</div>
+              <div class="sudden-card__options" id="suddenOptionsB"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar">
+            <button id="resolveSuddenBtn" class="btn btn--primary">Resuelve tanda</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PASO 7 -->
+    <div id="stepFeedback" class="step-panel">
+      <section class="panel">
+        <div class="panel-content">
+          <div class="identity-strip">🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral</div>
+
+          <div class="panel__header">
+            <h2>🧠 Feedback pedagógico</h2>
+            <span class="chip">Paso 7</span>
+          </div>
+
+          <div class="sudden-grid">
+            <div class="sudden-card">
+              <div class="sudden-card__name" id="feedbackNameJugadorA">Retador</div>
+              <div id="suddenExplainA" class="info-box info-box--mini hidden"></div>
+            </div>
+
+            <div class="sudden-card">
+              <div class="sudden-card__name" id="feedbackNameJugadorB">Retado</div>
+              <div id="suddenExplainB" class="info-box info-box--mini hidden"></div>
+            </div>
+          </div>
+
+          <div id="suddenFeedback" class="info-box info-box--mini hidden"></div>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar">
+            <button id="btnContinuarResultado" class="btn btn--primary">Ver resultado final ➡</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PASO 8 -->
+    <div id="stepResult" class="step-panel">
+      <section class="panel hidden" id="panelFinalDuelo">
+        <div class="panel-content">
+          <div class="identity-strip">🗡️1️⃣⚔️1️⃣🛡️ •🔝🇮🇨 • Cromos Atleta💪🏻 • EFBoral</div>
+
+          <div class="panel__header">
+            <h2>🏁 Resultado del duelo</h2>
+            <span class="chip">Paso 8</span>
+          </div>
+
+          <div id="rankingSummary" class="info-box info-box--mini hidden"></div>
+
+          <div id="informeFinal" class="info-box info-box--mini hidden"></div>
+
+          <div id="achievementsBox" class="info-box info-box--mini hidden"></div>
+        </div>
+
+        <div class="panel-actions">
+          <div class="toolbar action-buttons">
+            <button id="btnSiguienteDuelo" class="btn btn--next">⏭ Siguiente duelo</button>
+            <button id="btnFinalizar" class="btn btn--warning">🏁 Finalizar partida</button>
+            <button id="btnAlbum" class="btn btn--primary">🏆 Álbum</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <div id="collectionModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="modal-close" id="modalCloseBtn">&times;</span>
+      <h2>📚 Álbum completo de cromos</h2>
+      <div id="fullCollectionContent" class="collection-content"></div>
+      <div class="toolbar" style="margin-top:20px;">
+        <button id="resetCollectionBtn" class="btn btn--warning">🔄 Reiniciar álbum del retador</button>
+        <button id="closeCollectionModalBtn" class="btn btn--primary">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="lightboxModal" class="modal hidden">
+    <div class="modal-content lightbox-content">
+      <span class="modal-close lightbox-close" id="lightboxCloseBtn">&times;</span>
+      <img id="lightboxImage" src="" alt="Cromo ampliado" style="width:100%; max-height:80vh; object-fit:contain;">
+      <p id="lightboxCode" style="text-align:center; margin-top:10px;"></p>
+    </div>
+  </div>
+</div>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
