@@ -11,7 +11,7 @@ const IMAGE_URLS = {
   "A-MC 3.3": "https://drive.google.com/thumbnail?id=1SuUkFMpRd1cQq8Eu8pnOaN_zpm8dTEat&sz=w1000",
   "A-MC 4.1": "https://drive.google.com/thumbnail?id=1f56GyLAWob5wkZk2iEucWmPNkLZEtuW7&sz=w1000",
   "A-MC 4.2": "https://drive.google.com/thumbnail?id=1P1PRBR9kOhvL8bxZniboL5o9JZ8LSy1A&sz=w1000",
-  "A-MC 4.3": "https://drive.google.com/thumbnail?id=1IAlH_h7KdtFWAaNss4IXVLmk1WmloX6H&sz=w1000",
+ "A-MC 4.3": "https://drive.google.com/thumbnail?id=1RES_2NjSJiffUpBSFqaHt4HBb3j_OELT&sz=w1000",
   "A-MC 5.1": "https://drive.google.com/thumbnail?id=1ONI7b4NYO48c-sAWI8gXvPGqajOIIv1u&sz=w1000",
   "A-MC 5.2": "https://drive.google.com/thumbnail?id=1-yTHk69IXGrW4fQ_g_s1FGOGLvIqsvGK&sz=w1000",
   "A-MC 5.3": "https://drive.google.com/thumbnail?id=1Npim_U-6xVWTZ0FqfN2xYKvORr1y0JVt&sz=w1000",
